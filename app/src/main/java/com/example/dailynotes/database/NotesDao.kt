@@ -1,4 +1,4 @@
-package database
+package com.example.dailynotes.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
@@ -10,7 +10,7 @@ import androidx.room.Query
 interface NotesDao {
 
     @Insert
-    fun insert(notes: Notes)
+    fun insert(notes: Notes): Long
 
     @Query("SELECT * FROM notes_table ORDER BY noteId DESC")
     fun getAllNotes(): LiveData<List<Notes>>

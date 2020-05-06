@@ -15,8 +15,8 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.dailynotes.R
 import com.example.dailynotes.databinding.NotesDisplayFragmentBinding
-import database.NotesDao
-import database.NotesDatabase
+import com.example.dailynotes.database.NotesDao
+import com.example.dailynotes.database.NotesDatabase
 
 class NotesDisplayFragment : Fragment() {
 
@@ -40,12 +40,23 @@ class NotesDisplayFragment : Fragment() {
 
         binding.notesDisplayViewModel = notesDisplayViewModel
 
+
         notesDisplayViewModel.navigateToCreateFragment.observe(viewLifecycleOwner, Observer {
             if(it)
             {
                 Toast.makeText(context,"Add Clicked",Toast.LENGTH_SHORT).show()
                 findNavController().navigate(R.id.action_notesDisplayFragment_to_notesCreateFragment)
                 notesDisplayViewModel.onNavigateToCreateComplete()
+            }
+        })
+
+        val adapter = NotesDisplayAdapter()
+        binding.notesList.adapter = adapter
+
+        notesDisplayViewModel.allNotes.observe(viewLifecycleOwner, Observer {
+            if (it!= null)
+            {
+                adapter.submitList(it)
             }
         })
 

@@ -19,5 +19,9 @@
         android:id="@+id/notesCreateFragment"
         android:name="com.example.dailynotes.notecreate.NotesCreateFragment"
         android:label="notes_create_fragment"
-        tools:layout="@layout/notes_create_fragment" />
+        tools:layout="@layout/notes_create_fragment" >
+        <action
+            android:id="@+id/action_notesCreateFragment_to_notesDisplayFragment"
+            app:destination="@id/notesDisplayFragment" />
+    </fragment>
 </navigation>

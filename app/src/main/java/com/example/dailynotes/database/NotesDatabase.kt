@@ -1,4 +1,4 @@
-package database
+package com.example.dailynotes.database
 
 import android.content.Context
 import androidx.room.Database
@@ -21,7 +21,8 @@ abstract class NotesDatabase : RoomDatabase() {
 
             synchronized(this) {
 
-                var instance = INSTANCE
+                var instance =
+                    INSTANCE
 
                 if (instance == null) {
                     instance = Room.databaseBuilder(
