@@ -44,7 +44,7 @@ class NotesDisplayFragment : Fragment() {
         notesDisplayViewModel.navigateToCreateFragment.observe(viewLifecycleOwner, Observer {
             if(it)
             {
-                Toast.makeText(context,"Add Clicked",Toast.LENGTH_SHORT).show()
+
                 findNavController().navigate(R.id.action_notesDisplayFragment_to_notesCreateFragment)
                 notesDisplayViewModel.onNavigateToCreateComplete()
             }
@@ -63,6 +63,8 @@ class NotesDisplayFragment : Fragment() {
                 adapter.submitList(it)
             }
         })
+
+        //Observe navigateToUpdate
 
         notesDisplayViewModel.navigateToUpdateFragment.observe(viewLifecycleOwner, Observer {
 

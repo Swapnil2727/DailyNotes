@@ -1,6 +1,7 @@
 package com.example.dailynotes.notesupdate
 
 import android.app.Application
+import android.content.Context
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.provider.ContactsContract
@@ -8,6 +9,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -18,6 +21,7 @@ import com.example.dailynotes.database.Notes
 import com.example.dailynotes.database.NotesDao
 import com.example.dailynotes.database.NotesDatabase
 import com.example.dailynotes.databinding.NotesUpdateFragmentBinding
+import com.example.dailynotes.hideKeyboard
 
 class NotesUpdateFragment : Fragment() {
 
@@ -52,11 +56,16 @@ class NotesUpdateFragment : Fragment() {
             var detail = binding.notesUpdateText.text.toString()
             var note =Notes(noteTitle = title,noteDetail = detail)
             note.noteId = arguments.note.noteId
+
+            //Upsert Insert onconflict Resolve
             notesUpdateViewModel.onAdded(note)
+            //hidekeyboard
+            hideKeyboard(requireActivity(),requireView())
         })
 
         binding.floatingDeleteButton.setOnClickListener(View.OnClickListener {
             notesUpdateViewModel.onDelete(arguments.note)
+            hideKeyboard(requireActivity(),requireView())
         })
 
         notesUpdateViewModel.navigateToNotesDisplay.observe(viewLifecycleOwner, Observer {

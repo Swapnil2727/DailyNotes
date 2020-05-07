@@ -34,6 +34,7 @@ class NotesUpdateViewModel(val database: NotesDao, application: Application, not
         }
     }
 
+
     fun onAdded(note: Notes) {
         viewModelScope.launch {
             insert(note)
@@ -51,6 +52,7 @@ class NotesUpdateViewModel(val database: NotesDao, application: Application, not
     }
     fun onNavigateToNotesDisplayComplete() {
         _navigateToNotesDisplay.value = false
+
     }
 
 }
