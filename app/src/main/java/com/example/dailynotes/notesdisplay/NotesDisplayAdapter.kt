@@ -3,13 +3,12 @@ package com.example.dailynotes.notesdisplay
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dailynotes.databinding.CardNoteBinding
 import com.example.dailynotes.database.Notes
 
-class NotesDisplayAdapter : androidx.recyclerview.widget.ListAdapter
+class NotesDisplayAdapter (val clickListener: NoteClickListner): androidx.recyclerview.widget.ListAdapter
 <Notes,NotesDisplayAdapter.ViewHolder>(NotesDiffCallback()) {
 
 
@@ -20,15 +19,18 @@ class NotesDisplayAdapter : androidx.recyclerview.widget.ListAdapter
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-            holder.bind(getItem(position)!!)
+            holder.bind(getItem(position)!!,clickListener)
     }
 
 
     class ViewHolder private constructor(val binding:CardNoteBinding ):
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: Notes)
+        fun bind(
+            item: Notes,
+            clickListener: NoteClickListner
+        )
         {
-
+            binding.clickListner = clickListener
             binding.notes = item
             binding.executePendingBindings()
         }
@@ -54,6 +56,16 @@ class NotesDisplayAdapter : androidx.recyclerview.widget.ListAdapter
         }
 
     }
+
+    class NoteClickListner(val clickListener: (notes: Notes) -> Unit)
+    {
+        fun onClick(notes: Notes)
+        {
+            clickListener(notes)
+        }
+    }
+
+
 
 
 

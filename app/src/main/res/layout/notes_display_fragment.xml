@@ -8,6 +8,7 @@
             name="notesDisplayViewModel"
             type="com.example.dailynotes.notesdisplay.NotesDisplayViewModel" />
     </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -28,7 +29,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/notes_list"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:elevation="@dimen/cardview_default_elevation"
@@ -38,6 +39,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/floatingAddButton"
             tools:listitem="@layout/card_note" />
+
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

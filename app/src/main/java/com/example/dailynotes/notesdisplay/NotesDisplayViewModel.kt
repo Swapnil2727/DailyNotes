@@ -1,6 +1,7 @@
 package com.example.dailynotes.notesdisplay
 
 import android.app.Application
+import android.provider.ContactsContract
 import android.provider.SyncStateContract.Helpers.insert
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
@@ -16,7 +17,9 @@ import java.util.function.BinaryOperator
 class NotesDisplayViewModel(val database: NotesDao, application: Application) : AndroidViewModel(application) {
     val allNotes = database.getAllNotes()
 
+    private var _navigateToUpdateFragment = MutableLiveData<Notes?>()
 
+    val navigateToUpdateFragment: MutableLiveData<Notes?> get() = _navigateToUpdateFragment
 
     val navigateToCreateFragment = MutableLiveData<Boolean>()
 
@@ -34,4 +37,13 @@ class NotesDisplayViewModel(val database: NotesDao, application: Application) : 
         navigateToCreateFragment.value = false
     }
 
+    fun onNoteClicked(note: Notes)
+    {
+        _navigateToUpdateFragment.value = note
+    }
+
+    fun onNavigationToUpdateComplete()
+    {
+        _navigateToUpdateFragment.value = null
+    }
 }

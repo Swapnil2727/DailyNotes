@@ -14,6 +14,9 @@
             android:id="@+id/action_notesDisplayFragment_to_notesCreateFragment"
             app:destination="@id/notesCreateFragment"
             app:launchSingleTop="false" />
+        <action
+            android:id="@+id/action_notesDisplayFragment_to_notesUpdateFragment"
+            app:destination="@id/notesUpdateFragment" />
     </fragment>
     <fragment
         android:id="@+id/notesCreateFragment"
@@ -23,5 +26,17 @@
         <action
             android:id="@+id/action_notesCreateFragment_to_notesDisplayFragment"
             app:destination="@id/notesDisplayFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/notesUpdateFragment"
+        android:name="com.example.dailynotes.notesupdate.NotesUpdateFragment"
+        android:label="NotesUpdateFragment" >
+        <argument
+            android:name="note"
+            app:argType="com.example.dailynotes.database.Notes" />
+        <action
+            android:id="@+id/action_notesUpdateFragment_to_notesDisplayFragment"
+            app:destination="@id/notesDisplayFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

@@ -50,7 +50,11 @@ class NotesDisplayFragment : Fragment() {
             }
         })
 
-        val adapter = NotesDisplayAdapter()
+        val adapter = NotesDisplayAdapter(NotesDisplayAdapter.NoteClickListner{
+            notesDisplayViewModel.onNoteClicked(it)
+        }
+
+        )
         binding.notesList.adapter = adapter
 
         notesDisplayViewModel.allNotes.observe(viewLifecycleOwner, Observer {
@@ -59,6 +63,17 @@ class NotesDisplayFragment : Fragment() {
                 adapter.submitList(it)
             }
         })
+
+        notesDisplayViewModel.navigateToUpdateFragment.observe(viewLifecycleOwner, Observer {
+
+           it?.let {
+
+               findNavController().navigate(NotesDisplayFragmentDirections.actionNotesDisplayFragmentToNotesUpdateFragment(it))
+               notesDisplayViewModel.onNavigationToUpdateComplete()
+           }
+            })
+
+
 
 
 
