@@ -1,6 +1,6 @@
 # DailyNotes
 
-[!(https://youtu.be/CEUwzGScrFg)]
+[![APP](https://youtu.be/CEUwzGScrFg)]
 
 This is Note taking App implemented using Following concepts.
 1.RoomDatabase
