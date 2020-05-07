@@ -7,6 +7,9 @@
 ![UpdateDelete](https://user-images.githubusercontent.com/39974969/81253276-88d85200-906b-11ea-8ead-5831f3974f35.PNG)
 
 
+This app uses.
+
+
 1.RoomDatabase
 
 
