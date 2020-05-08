@@ -11,6 +11,7 @@ import kotlinx.coroutines.withContext
 class NotesCreateViewModel(val database: NotesDao, application: Application) :
     AndroidViewModel(application) {
 
+    //private to this class only because we don't want change in this property from anywhere else
     private val _navigateToNotesDisplay = MutableLiveData<Boolean>()
     val navigateToNotesDisplay: LiveData<Boolean> get() = _navigateToNotesDisplay
 
@@ -27,7 +28,7 @@ class NotesCreateViewModel(val database: NotesDao, application: Application) :
 
     fun onAdded(note: Notes) {
         viewModelScope.launch {
-            insert(note)
+            insert(note) //Suspend function called from coroutine
             _navigateToNotesDisplay.value = true
         }
 

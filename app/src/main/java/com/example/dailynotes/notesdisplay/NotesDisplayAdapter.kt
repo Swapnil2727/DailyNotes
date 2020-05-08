@@ -45,6 +45,8 @@ class NotesDisplayAdapter (val clickListener: NoteClickListner): androidx.recycl
 
         }
     }
+
+    // For Update the differences in list
     class NotesDiffCallback: DiffUtil.ItemCallback<Notes>()
     {
         override fun areItemsTheSame(oldItem: Notes, newItem: Notes): Boolean {

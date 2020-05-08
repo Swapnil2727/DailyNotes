@@ -57,6 +57,7 @@ class NotesDisplayFragment : Fragment() {
         )
         binding.notesList.adapter = adapter
 
+        //Update adpter on Notes List update
         notesDisplayViewModel.allNotes.observe(viewLifecycleOwner, Observer {
             if (it!= null)
             {
