@@ -5,4 +5,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title">Title</string>
     <string name="enter_notes_here">Enter Notes Here</string>
+    <string name="deleteAlertString">Are you sure want to delete this note?</string>
+    <string name="notes_content">Notes Content</string>
+    <string name="requireField">This field is required</string>
 </resources>

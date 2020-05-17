@@ -1,5 +1,6 @@
 package com.example.dailynotes.notesupdate
 
+import android.app.AlertDialog
 import android.app.Application
 import android.content.Context
 import androidx.lifecycle.ViewModelProviders
@@ -10,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -22,6 +24,8 @@ import com.example.dailynotes.database.NotesDao
 import com.example.dailynotes.database.NotesDatabase
 import com.example.dailynotes.databinding.NotesUpdateFragmentBinding
 import com.example.dailynotes.hideKeyboard
+import com.example.dailynotes.toast
+
 
 class NotesUpdateFragment : Fragment() {
 
@@ -48,23 +52,40 @@ class NotesUpdateFragment : Fragment() {
 
 
 
-        binding.titleUpdateText.setText(arguments.note.noteTitle)
-        binding.notesUpdateText.setText(arguments.note.noteDetail)
+        binding.updateTitleEditText.setText(arguments.note.noteTitle)
+        binding.updateNotesEditText.setText(arguments.note.noteDetail)
         binding.floatingUpdateButton.setOnClickListener(View.OnClickListener {
 
-            var title = binding.titleUpdateText.text.toString()
-            var detail = binding.notesUpdateText.text.toString()
+            var title = binding.updateTitleEditText.text.toString()
+            var detail = binding.updateNotesEditText.text.toString()
             var note =Notes(noteTitle = title,noteDetail = detail)
             note.noteId = arguments.note.noteId
 
+            if(title.isEmpty())
+            {
+                binding.titleUpdateTextInputLayout.error = getString(R.string.requireField)
+                return@OnClickListener
+
+            }
             //Upsert Insert onconflict Resolve
             notesUpdateViewModel.onAdded(note)
+            context?.toast("Note updated")
             //hidekeyboard
             hideKeyboard(requireActivity(),requireView())
         })
 
         binding.floatingDeleteButton.setOnClickListener(View.OnClickListener {
-            notesUpdateViewModel.onDelete(arguments.note)
+
+            val builder = AlertDialog.Builder(context)
+
+            builder.setMessage(getString(R.string.deleteAlertString)).setCancelable(false)
+                .setPositiveButton("yes"){dialogInterface, _ ->
+                    notesUpdateViewModel.onDelete(arguments.note)
+                    context?.toast("Note Deleted")
+                }.setNegativeButton("No"){dialogInterface, _ ->
+                    dialogInterface.dismiss()
+                }.create().show()
+
             hideKeyboard(requireActivity(),requireView())
         })
 
@@ -73,6 +94,7 @@ class NotesUpdateFragment : Fragment() {
             {
                 findNavController().navigate(NotesUpdateFragmentDirections.actionNotesUpdateFragmentToNotesDisplayFragment())
                 notesUpdateViewModel.onNavigateToNotesDisplayComplete()
+
             }
         })
 

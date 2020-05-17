@@ -16,7 +16,8 @@
             app:launchSingleTop="false" />
         <action
             android:id="@+id/action_notesDisplayFragment_to_notesUpdateFragment"
-            app:destination="@id/notesUpdateFragment" />
+            app:destination="@id/notesUpdateFragment"
+            app:enterAnim="@android:anim/slide_in_left" />
     </fragment>
     <fragment
         android:id="@+id/notesCreateFragment"
