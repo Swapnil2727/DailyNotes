@@ -28,8 +28,8 @@ import androidx.fragment.app.FragmentActivity
 
 fun hideKeyboard(activity:FragmentActivity, view:View) {
     // Hide the keyboard.
-    val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-    imm.hideSoftInputFromWindow(view?.windowToken, 0)
+    val imm = activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    imm.hideSoftInputFromWindow(view.windowToken, 0)
 }
 
 fun Context.toast(message:String)

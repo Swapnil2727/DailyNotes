@@ -2,17 +2,11 @@ package com.example.dailynotes.notesupdate
 
 import android.app.AlertDialog
 import android.app.Application
-import android.content.Context
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.provider.ContactsContract
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
-import android.widget.Toast
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider

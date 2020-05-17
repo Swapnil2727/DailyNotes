@@ -10,7 +10,7 @@ import com.example.dailynotes.database.Notes
 @BindingAdapter("setTitle")
 fun TextView.setTitle(notes: Notes)
 {
-    notes?.let{
+    notes.let{
         text = notes.noteTitle
     }
 }
@@ -18,7 +18,7 @@ fun TextView.setTitle(notes: Notes)
 @BindingAdapter("setDetail")
 fun TextView.setDetail(notes: Notes)
 {
-    notes?.let {
+    notes.let {
         text = notes.noteDetail
     }
 }

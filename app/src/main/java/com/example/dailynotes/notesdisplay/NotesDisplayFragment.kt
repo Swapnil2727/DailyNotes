@@ -2,21 +2,25 @@ package com.example.dailynotes.notesdisplay
 
 
 import android.app.Application
+import android.opengl.Visibility
+
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.core.view.isVisible
+
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.dailynotes.R
 import com.example.dailynotes.databinding.NotesDisplayFragmentBinding
 import com.example.dailynotes.database.NotesDao
 import com.example.dailynotes.database.NotesDatabase
+
+
 
 class NotesDisplayFragment : Fragment() {
 
@@ -41,6 +45,8 @@ class NotesDisplayFragment : Fragment() {
         binding.notesDisplayViewModel = notesDisplayViewModel
 
 
+
+
         notesDisplayViewModel.navigateToCreateFragment.observe(viewLifecycleOwner, Observer {
             if(it)
             {
@@ -57,12 +63,17 @@ class NotesDisplayFragment : Fragment() {
         )
         binding.notesList.adapter = adapter
 
+
+
         //Update adpter on Notes List update
         notesDisplayViewModel.allNotes.observe(viewLifecycleOwner, Observer {
-            if (it!= null)
-            {
-                adapter.submitList(it)
-            }
+
+          if(it.isNotEmpty())
+          {
+              adapter.submitList(it)
+          }else{
+              binding.blankAdapterImageView.visibility = View.VISIBLE
+          }
         })
 
         //Observe navigateToUpdate
@@ -75,9 +86,6 @@ class NotesDisplayFragment : Fragment() {
                notesDisplayViewModel.onNavigationToUpdateComplete()
            }
             })
-
-
-
 
 
 
