@@ -17,7 +17,9 @@
         <action
             android:id="@+id/action_notesDisplayFragment_to_notesUpdateFragment"
             app:destination="@id/notesUpdateFragment"
-            app:enterAnim="@android:anim/slide_in_left" />
+            app:enterAnim="@android:anim/slide_in_left"
+            app:popUpTo="@id/notesDisplayFragment"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/notesCreateFragment"
@@ -38,6 +40,7 @@
         <action
             android:id="@+id/action_notesUpdateFragment_to_notesDisplayFragment"
             app:destination="@id/notesDisplayFragment"
+            app:popUpTo="@id/notesDisplayFragment"
             app:popUpToInclusive="true" />
     </fragment>
 </navigation>

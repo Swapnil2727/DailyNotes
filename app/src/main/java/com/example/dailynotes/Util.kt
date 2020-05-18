@@ -19,6 +19,7 @@ package com.example.dailynotes
 
 import android.app.Activity
 import android.content.Context
+import android.view.Gravity
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
@@ -34,6 +35,8 @@ fun hideKeyboard(activity:FragmentActivity, view:View) {
 
 fun Context.toast(message:String)
 {
-    Toast.makeText(this,message,Toast.LENGTH_SHORT).show()
+    val toast= Toast.makeText(this,message,Toast.LENGTH_SHORT)
+    toast.setGravity(Gravity.CENTER_HORIZONTAL or Gravity.BOTTOM,0,0)
+    toast.show()
 }
 
