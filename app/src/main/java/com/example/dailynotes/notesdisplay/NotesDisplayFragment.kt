@@ -9,6 +9,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
+import androidx.activity.addCallback
 import androidx.core.view.isVisible
 
 import androidx.databinding.DataBindingUtil
@@ -19,12 +22,13 @@ import com.example.dailynotes.R
 import com.example.dailynotes.databinding.NotesDisplayFragmentBinding
 import com.example.dailynotes.database.NotesDao
 import com.example.dailynotes.database.NotesDatabase
-
+import com.example.dailynotes.toast
+import kotlin.properties.Delegates
 
 
 class NotesDisplayFragment : Fragment() {
 
-
+    private var backButtonClickCount:Int = 0
     private lateinit var notesDisplayViewModel: NotesDisplayViewModel
 
     override fun onCreateView(
@@ -86,6 +90,24 @@ class NotesDisplayFragment : Fragment() {
                notesDisplayViewModel.onNavigationToUpdateComplete()
            }
             })
+
+
+
+        // This callback will only be called when MyFragment is at least Started.
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+
+            if(backButtonClickCount==0)
+            {
+                context?.toast("Press back again to exit")
+                backButtonClickCount++
+            }else
+            {
+                activity?.finish()
+            }
+
+        }
+
+
 
 
 
