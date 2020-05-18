@@ -98,7 +98,7 @@ class NotesDisplayFragment : Fragment() {
 
             if(backButtonClickCount==0)
             {
-                context?.toast("Press back again to exit")
+                context?.toast(getString(R.string.backButtonPress))
                 backButtonClickCount++
             }else
             {
