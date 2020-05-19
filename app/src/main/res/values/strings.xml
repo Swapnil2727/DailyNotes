@@ -9,4 +9,6 @@
     <string name="notes_content">Notes Content</string>
     <string name="requireField">This field is required</string>
     <string name="backButtonPress">Press back again to exit</string>
+    <string name="detailText">I am Detail</string>
+    <string name="titleText">This is Title</string>
 </resources>

@@ -7,7 +7,7 @@
 
         <variable
             name="notesCreateViewModel"
-            type="com.example.dailynotes.notecreate.NotesCreateViewModel" />
+            type="com.lightnote.dailynotes.notecreate.NotesCreateViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

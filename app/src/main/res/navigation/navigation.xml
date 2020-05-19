@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/notesDisplayFragment"
-        android:name="com.example.dailynotes.notesdisplay.NotesDisplayFragment"
+        android:name="com.lightnote.dailynotes.notesdisplay.NotesDisplayFragment"
         android:label="notes_display_fragment"
         tools:layout="@layout/notes_display_fragment" >
         <action
@@ -23,7 +23,7 @@
     </fragment>
     <fragment
         android:id="@+id/notesCreateFragment"
-        android:name="com.example.dailynotes.notecreate.NotesCreateFragment"
+        android:name="com.lightnote.dailynotes.notecreate.NotesCreateFragment"
         android:label="notes_create_fragment"
         tools:layout="@layout/notes_create_fragment" >
         <action
@@ -32,11 +32,11 @@
     </fragment>
     <fragment
         android:id="@+id/notesUpdateFragment"
-        android:name="com.example.dailynotes.notesupdate.NotesUpdateFragment"
+        android:name="com.lightnote.dailynotes.notesupdate.NotesUpdateFragment"
         android:label="NotesUpdateFragment" >
         <argument
             android:name="note"
-            app:argType="com.example.dailynotes.database.Notes" />
+            app:argType="com.lightnote.dailynotes.database.Notes" />
         <action
             android:id="@+id/action_notesUpdateFragment_to_notesDisplayFragment"
             app:destination="@id/notesDisplayFragment"

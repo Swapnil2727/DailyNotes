@@ -7,11 +7,11 @@
 
         <variable
             name="notes"
-            type="com.example.dailynotes.database.Notes" />
+            type="com.lightnote.dailynotes.database.Notes" />
 
         <variable
             name="clickListner"
-            type="com.example.dailynotes.notesdisplay.NotesDisplayAdapter.NoteClickListner" />
+            type="com.lightnote.dailynotes.notesdisplay.NotesDisplayAdapter.NoteClickListner" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -51,7 +51,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:setTitle="@{notes}"
-                    tools:text="This is Title" />
+                    tools:text="@string/titleText" />
 
                 <TextView
 
@@ -67,7 +67,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/title_textView"
                     app:setDetail="@{notes}"
-                    tools:text="I am Detail" />
+                    tools:text="@string/detailText" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
